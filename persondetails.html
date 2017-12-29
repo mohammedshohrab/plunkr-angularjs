@@ -1,0 +1,27 @@
+<div id="userDetails">
+  <div>Name:{{person.name}}</div>
+  <div>
+    <img ng-src="{{person.avatar_url}}" title="{{person.name}}" />
+  </div>
+  <select ng-model="sort">
+    <option value="name">Name</option>
+    <option value="stargazers_count">Count</option>
+    <option value="language">Language</option>
+  </select>
+</div>
+<table id="tableData">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Stars</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="repo in repos | orderBy:sort">
+      <td>{{repo.name}}</td>
+      <td>{{repo.stargazers_count | number }}</td>
+      <td>{{repo.language}}</td>
+    </tr>
+  </tbody>
+</table>
